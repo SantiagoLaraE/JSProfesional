@@ -1,0 +1,26 @@
+{
+  "name": "platzi-media-player",
+  "version": "1.0.0",
+  "description": "Proyecto del Curso Profesional de JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SantiagoLaraE/JSProfesional.git"
+  },
+  "keywords": [
+    "Platzi",
+    "JavaScript"
+  ],
+  "author": "Santiago Lara <oscarescobar773@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SantiagoLaraE/JSProfesional/issues"
+  },
+  "homepage": "https://github.com/SantiagoLaraE/JSProfesional#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
