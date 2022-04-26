@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This</title>
+  </head>
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+
+        // this en el scope global
+
+        console.log(this); //This es igual a window
+
+        // this en el scope de una función
+        function whoIsThis(){
+            return this;
+        }
+
+        console.log(whoIsThis(this)); //This es igual a window
+
+        // this en el scope de una función de strict mode
+        
+        function whoIsThisStrict(){
+            "use strict"; // sirve para evitar algunos errores que le sucede a los programas
+            return this;
+        }
+
+        console.log(whoIsThisStrict(this)); //This es igual a undefined
+
+        // this en el contexto de un objeto
+
+        const person = {
+            name: "Santiago",
+            saludar: function(){
+                console.log(`Hola soy ${this.name}`) //This hace referencia al objeto
+            }
+        }
+
+        person.saludar();
+
+        // this cuando sacamos a una función de un objeto
+
+        const accion = person.saludar;
+        accion(); // No se está llamando en el contexto de un objeto
+
+        // this en el contexto de una "clase"
+
+        function Person(name){
+            this.name = name //Funciona como un constructor
+        }
+
+        Person.prototype.saludar = function() {
+            console.log(`Hola soy ${this.name}`)
+        }
+
+        const person1 = new Person('Oscar');
+        person1.saludar();
+
+
+    </script>
+  </body>
+</html>

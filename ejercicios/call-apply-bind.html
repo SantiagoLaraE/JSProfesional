@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call Apply & Bind</title>
+  </head>
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <ul>
+      <li><button class="call-to-action">Botón 1</button></li>
+      <li><button class="call-to-action">Botón 2</button></li>
+      <li><button class="call-to-action">Botón 3</button></li>
+    </ul>
+
+    <script>
+      // Establece this usando call
+      function saludar() {
+        console.log(`Esto es: ${this.name} y ${this.apellido}`);
+      }
+      const person1 = {
+        name: "Santiago",
+        apellido: "Lara Escobar",
+      };
+
+      saludar.call(person1); // Se estable el this para una función
+      saludar.apply(person1);
+      // Establece this usando call y pasar los argumentos a la función
+
+      function caminar(metros, direccion) {
+        console.log(`${this.name} camina ${metros} metros hacia ${direccion}.`);
+      }
+
+      caminar.call(person1, 400, "norte");
+
+      // --- Cuando se le pasan argumento debe ir primero lo que va a equivaler a this y luego los si los parámetros en su orden
+
+      // Establece this usando apply y pasar los argumentos a la función
+      caminar.apply(person1, [800, "sur"]);
+
+      /*
+      Call - commas 
+      Apply - Array
+      */
+
+      // Establecer this en una nueva función usando bind
+
+      const person2 = {
+        name: "Oscar",
+        apellido: "Escobar",
+      };
+
+      const person2Saluda = saludar.bind(person2);
+      person2Saluda();
+
+      const person2Camina = caminar.bind(person2, 1000, "este");
+      person2Camina(2000, "este");
+
+      // Cuándo es útil usar alguno de estos métodos
+
+      const buttons = document.getElementsByClassName("call-to-action");
+    //   buttons.forEach(button => {
+    //       button.onclick = () => alert("Nunca pares de aprender")
+    //   });
+    console.log(buttons);
+
+      //Node List se parecen a los arreglos pero no son iguales por sus propiedades y métodos
+      Array.prototype.forEach.call(buttons, button => {
+          button.onclick = () => {
+            alert("Nunca pares de aprender");
+            console.log(button.innerText);
+          };
+      });
+    </script>
+  </body>
+</html>
